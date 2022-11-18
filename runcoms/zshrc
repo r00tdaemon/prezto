@@ -11,3 +11,20 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+export PATH="/home/ujjwal/.local/bin:$PATH"
+
+export PATH="/home/ujjwal/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export DENO_INSTALL="/home/ujjwal/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# https://stackoverflow.com/a/61110604 X11 forwarding
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
+
+# https://superuser.com/a/1370548
+export GDK_SCALE=1.25
+export GDK_DPI_SCALE=1
