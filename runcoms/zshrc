@@ -18,13 +18,23 @@ export PATH="/home/ujjwal/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export DENO_INSTALL="/home/ujjwal/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
 # https://stackoverflow.com/a/61110604 X11 forwarding
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-export LIBGL_ALWAYS_INDIRECT=1
+# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+# export LIBGL_ALWAYS_INDIRECT=1
 
 # https://superuser.com/a/1370548
-export GDK_SCALE=1.25
-export GDK_DPI_SCALE=1
+# export GDK_SCALE=1.25
+# export GDK_DPI_SCALE=1
+
+# https://github.com/sorin-ionescu/prezto/issues/1820#issuecomment-846607339
+unsetopt PATH_DIRS
+
+# fnm
+export PATH=/home/ujjwal/.fnm:$PATH
+eval "`fnm env`"
+
+# Rustlang
+export PATH="/home/ujjwal/.cargo/bin:$PATH"
+
+# Semgrep metrics off
+export SEMGREP_SEND_METRICS=off
