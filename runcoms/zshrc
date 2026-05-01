@@ -11,3 +11,19 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+# Temp devbox path with zsh patch
+# PATH="/home/ujjwal/code/go.jetify.com/devbox/dist:$PATH"
+PATH="$PATH:$HOME/.local/bin"
+
+eval "$(devbox global shellenv)" > /dev/null 2>&1
+(eval "$(devbox global shellenv --preserve-path-stack -r)" && hash -r) > /dev/null 2>&1
+# eval "$(direnv hook zsh)"
+
+alias sops-edit='sudo -E SOPS_AGE_KEY_FILE=/var/lib/sops-nix/key.txt sops'
+
+if [[ -n "$NONO_CAP_FILE" ]]; then 
+  unsetopt nocaseglob
+  if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  fi
+fi
